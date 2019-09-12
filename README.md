@@ -17,3 +17,14 @@ python echoserver.py
 # Call server
 python echo.py <message>
 example: python echo.py "Hello World"
+
+# To enable SSL
+openssl req -newkey rsa:2048 -nodes -keyout server.key -x509 -days 365 -out server.crt
+
+Country Name (2 letter code) []:US
+State or Province Name (full name) []:WA
+Locality Name (eg, city) []:Seattle
+Organization Name (eg, company) []:
+Organizational Unit Name (eg, section) []:
+Common Name (eg, fully qualified host name) []:localhost
+Email Address []:

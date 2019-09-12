@@ -7,7 +7,12 @@ parser = argparse.ArgumentParser()
 parser.add_argument("message")
 args = parser.parse_args()
 
-channel = grpc.insecure_channel('localhost:50051')
+with open('server.crt', 'rb') as f:
+    certs = f.read()
+
+creds = grpc.ssl_channel_credentials(root_certificates=certs)
+
+channel = grpc.secure_channel('localhost:50051', creds)
 stub = echoserver_pb2_grpc.EchoServerStub(channel)
 response = stub.Echo(echoserver_pb2.EchoRequest(message=args.message))
 
