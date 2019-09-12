@@ -1,3 +1,7 @@
+# EchoServer
+
+What this is an example of a grpc server that echos what ever message you send it. Even sets up TLS.
+
 # Setting up the environment
 
 ```
